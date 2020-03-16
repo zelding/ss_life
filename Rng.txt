@@ -1,0 +1,13 @@
+//stonescript 2.9.2
+
+var seed = 1967
+
+func RandomRange(min, max)
+  var rtnv = -1
+
+  ? min >= max
+    rtnv = max - rng % (min + max - 1)
+  :
+    rtnv = min + rng % (max - min + 1)
+
+  return math.Clamp(rtnv, min, max)

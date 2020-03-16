@@ -1,0 +1,51 @@
+// stronescript 2.9.2
+
+var debug = 0
+var steps = 0
+
+var sw  = screen.w
+var sh  = screen.h
+
+var canvas = new Life/Canvas
+// @var alive LinkedList/LinkedList<Life/Cell>
+var alive  = new LinkedList/LinkedList
+var Brain  = import Life/Brain
+
+canvas.Init(sw-1, sh-1)
+//canvas.Randomize(alive)
+canvas.addDefaultCells(alive);
+
+?key = primary
+  debug = 1
+:
+  debug = 0
+
+// draw the next step
+func Step()
+  Brain.countNeighbors(alive)
+  steps++
+
+func DrawUI()
+
+  disable hud
+  disable player
+  disable loadout print
+
+  draw.Clear()
+
+  // border
+  draw.Box(0, 0, sw, sh, #aaaaaa, 8)
+  
+  // paint it black
+  draw.Bg(0, 0, #000000, sw, sh)
+
+  canvas.Draw(alive)
+
+  ? debug = 1
+    DrawDebug()
+
+  >`0,0,@steps@
+
+func DrawDebug()
+  >`1,1,#red,@rng@ (@alive.Length@)
+  >`2,1,#eeeeee,@alive@

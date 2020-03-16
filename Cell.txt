@@ -1,0 +1,33 @@
+//stonescript 2.9.2
+
+var x = 0
+var y = 0
+
+var state = 0
+var     n = 0
+
+func Init(_x, _y)
+  x = _x
+  y = _y
+
+func Clone()
+  var c = new Life/Cell
+  c.x = x
+  c.y = y
+  c.state = state
+
+  return c
+
+func SetAlive()
+  state = 1
+
+func IsAlive()
+  return state
+
+func ToString()
+  ? state > 0
+    return "▒"
+  return " "
+
+func Debug()
+  return "{" + x + "," + y + "}"
