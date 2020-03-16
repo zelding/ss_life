@@ -1,0 +1,63 @@
+// stronescript 2.9.2
+
+// @var list LinkedList/LinkedList<Life/Cell>
+// @return LinkedList/LinkedList<Life/Cell>
+func countNeighbors(list)
+  var returnList = new LinkedList/LinkedList
+
+  var c = null
+  for i = 0..list.Length - 1
+    c = list.Get(i)
+
+    c.n = Neighbors(c, list)
+
+func Neighbors(c, list)
+  var n = 0
+  var c = null
+
+  for i = 0..list.Length - 2
+    for j = i+1..list.Length - 1
+        c1 = list.Get(i)
+        c2 = list.Get(j)
+
+        ? fastIsClose(c1, c2)
+          n++
+
+  return n
+
+
+// @var a LinkedList/LinkedList<Life/Cell>
+// @var b LinkedList/LinkedList<Life/Cell>
+// @var d int distance to look defaults to 1
+// @return bool
+func isClose(a, b, d)
+  d = math.Clamp(d, 1, 5)
+  ? (a.x - d) >= b.x & (a.y - d) >= b.y
+    ? (a.x + d) <= b.x & (a.y + d) <= b.y
+        return true
+
+  return false
+
+// @var a LinkedList/LinkedList<Life/Cell>
+// @var b LinkedList/LinkedList<Life/Cell>
+// @var d int distance to look defaults to 1
+// @return bool
+func fastIsClose(a, b, d)
+  d = math.Clamp(d, 1, 5)
+
+  ? a.x = b.x & a.y = b.y
+    return false
+
+  ? (a.x - d) < b.x
+    return false
+
+  ? (a.y - d) > b.y
+    return false
+
+  ? (a.x + d) > b.x
+    return false
+
+  ? (a.y + d) > b.y
+    return false
+
+  return true
