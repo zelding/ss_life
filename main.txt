@@ -1,0 +1,7 @@
+
+var life = import Life/Life
+
+life.DrawUI()
+
+? time % 10 = 0
+  life.Step()
