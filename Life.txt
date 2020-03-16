@@ -1,6 +1,6 @@
 // stronescript 2.9.2
 
-var debug = 1
+var debug = true
 var steps = 0
 
 var sw  = screen.w
@@ -12,13 +12,13 @@ var alive  = new LinkedList/LinkedList
 var Brain  = import Life/Brain
 
 canvas.Init(sw-1, sh-1)
-canvas.Randomize(alive)
+canvas.Randomize(alive, 10)
 //canvas.AddDefaultCells(alive);
 
 ?key = primary
-  debug = 1
+  debug = true
 :
-  debug = 0
+  debug = false
 
 // draw the next step
 func Step()
@@ -41,7 +41,7 @@ func DrawUI()
 
   canvas.Draw(alive)
 
-  ? debug = 1
+  ? debug
     DrawDebug()
 
   >`0,0,@steps@

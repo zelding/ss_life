@@ -2,8 +2,9 @@
 
 var width      = 0
 var height     = 0
+var setUp      = false
 
-var setUp      = 0
+var iesus = import Life/Rng
 
 func Init(w, h)
   ? setUp = 1
@@ -13,25 +14,34 @@ func Init(w, h)
   height = h
 
 // @var cells LinkedList/LinkedList<Life/Cell>
-func Randomize(cells)
-  ? setUp = 1
+func Randomize(cells, number)
+  ? setUp
     return
-  setUp = 1
+  setUp = true
+
+  cells.Clear()
 
   var cell = new Life/Cell
+  var a = 0
+  var b = 0
 
-  for x = 1..width
-    for y = 1..height
-      ? rng % 1967 = 0
-        cell.Init(x, y)
-        cell.SetAlive()
-        cells.Add(cell.Clone())
+  for x = 0..number
+    
+    a = iesus.Range(1, width)
+    b = iesus.Range(1, height)
+
+    cell.Init(a, b)
+    cell.SetAlive()
+
+    cells.Add(cell.Clone())
 
 // @var cells LinkedList/LinkedList<Life/Cell>
 func AddDefaultCells(cells)
-  ? setUp = 1
+  ? setUp
       return
-    setUp = 1
+    setUp = true
+
+  cells.Clear()
 
   var c = new Life/Cell
 

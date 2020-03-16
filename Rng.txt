@@ -11,3 +11,6 @@ func RandomRange(min, max)
     rtnv = min + rng % (max - min + 1)
 
   return math.Clamp(rtnv, min, max)
+
+func Range(min, max)
+  return min + rng % (max - min + 1)
