@@ -34,10 +34,10 @@ func DrawUI()
   draw.Clear()
 
   // border
-  //draw.Box(0, 0, sw, sh, #aaaaaa, 8)
+  draw.Box(0, 0, sw, sh, #aaaaaa, 8)
   
   // paint it black
-  //draw.Bg(0, 0, #000000, sw, sh)
+  draw.Bg(0, 0, #000000, sw, sh)
 
   canvas.Draw(alive)
 

@@ -6,6 +6,8 @@ var setUp      = false
 
 var iesus = import Life/Rng
 
+// @var int w
+// @var int h
 func Init(w, h)
   ? setUp = 1
     return
@@ -62,6 +64,7 @@ func AddDefaultCells(cells)
   c.Init(3,8)
   cells.Add(c.Clone())
 
+// @var cells LinkedList/LinkedList<Life/Cell>
 func Draw(cells)
   var c = null
   for i = 0..cells.Length-1
@@ -69,6 +72,9 @@ func Draw(cells)
     draw.Bg(c.x,c.y, #green)
     >`@c.x@,@c.y@,#white,@c.n@
 
+  >`1,5,#white,@time@
+
+// @var cells LinkedList/LinkedList<Life/Cell>
 func Debug(cells)
   >`1,3,#aaaaaa,@cells@
 
