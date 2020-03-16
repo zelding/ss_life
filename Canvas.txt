@@ -12,6 +12,7 @@ func Init(w, h)
   width  = w
   height = h
 
+// @var cells LinkedList/LinkedList<Life/Cell>
 func Randomize(cells)
   ? setUp = 1
     return
@@ -26,7 +27,8 @@ func Randomize(cells)
         cell.SetAlive()
         cells.Add(cell.Clone())
 
-func addDefaultCells(cells)
+// @var cells LinkedList/LinkedList<Life/Cell>
+func AddDefaultCells(cells)
   ? setUp = 1
       return
     setUp = 1
@@ -37,10 +39,16 @@ func addDefaultCells(cells)
   cell.setAlive()
   cells.Add(c.Clone())
 
+  c = new Life/Cell
+
   c.Init(6,8)
   cells.Add(c.Clone())
+
+  c = new Life/Cell
   c.Init(5,7)
   cells.Add(c.Clone())
+
+  c = new Life/Cell
   c.Init(3,8)
   cells.Add(c.Clone())
 
