@@ -1,5 +1,7 @@
 // stronescript 2.9.2
 
+var defaultDistance = 1
+
 // @var list LinkedList/LinkedList<Life/Cell>
 // @return LinkedList/LinkedList<Life/Cell>
 func countNeighbors(list)
@@ -12,17 +14,16 @@ func countNeighbors(list)
     c.n = Neighbors(c, list)
 
 func Neighbors(c, list)
-  var n = 0
-  var c = null
+  var n  = 0
+  var c1 = null
+  var c2 = null
 
   for i = 0..list.Length - 2
+    c1 = list.Get(i)
     for j = i+1..list.Length - 1
-        c1 = list.Get(i)
         c2 = list.Get(j)
-
-        ? fastIsClose(c1, c2)
+        ? isClose(c1, c2, defaultDistance)
           n++
-
   return n
 
 
@@ -32,6 +33,9 @@ func Neighbors(c, list)
 // @return bool
 func isClose(a, b, d)
   d = math.Clamp(d, 1, 5)
+  ? a.x = b.x & a.y = b.y
+    return false
+
   ? (a.x - d) >= b.x & (a.y - d) >= b.y
     ? (a.x + d) <= b.x & (a.y + d) <= b.y
         return true
